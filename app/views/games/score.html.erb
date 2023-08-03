@@ -1,0 +1,24 @@
+<div class="container position-relative">
+  <h1>Result</h1>
+  <% if !@is_subset %>
+    <p>Sorry but <strong><%= @word.upcase %></strong> can't be built out of <%= @letters.join(', ').upcase %></p>
+      <div class="position-absolute top-0 end-0 fs-4 bg-dark p-3 text-white d-flex flex-column align-items-center">
+      <p>Grand Score: <%= @grand_score %></p>
+      <button><%= link_to "Reset Score", reset_path %></button>
+    </div>
+  <% elsif @is_valid == false %>
+    <p>Sorry but <strong><%= @word.upcase %></strong> does not seem to be a valid English word...</p>
+    <div class="position-absolute top-0 end-0 fs-4 bg-dark p-3 text-white d-flex flex-column align-items-center">
+      <p>Grand Score: <%= @grand_score %></p>
+      <button><%= link_to "Reset Score", reset_path %></button>
+    </div>
+  <% else %>
+    <p><strong>Congratulations!</strong> <% @word.upcase %> is a valid English word - You scored <%= @score %> points!</p>
+    <div class="position-absolute top-0 end-0 fs-4 bg-dark p-3 text-white d-flex flex-column align-items-center">
+      <p>Grand Score: <%= @grand_score %></p>
+      <button><%= link_to "Reset Score", reset_path %></button>
+    </div>
+  <% end %>
+  <div class="link"><%= link_to "Play again", new_path, class: 'no-text-decoration' %></div>
+
+</div>
